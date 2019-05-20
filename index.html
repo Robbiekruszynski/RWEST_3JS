@@ -4,7 +4,7 @@
 
     <style>
       body { margin: 0; }
-      canvas { width: 100%; height: 100%; };
+      canvas { width: 100%; height: 100%;};
     </style>
   </head>
 
@@ -14,14 +14,15 @@
     <script>
       let scene = new THREE.Scene( );
       let camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-      let renderer = new THREE.WebGLRenderer( );
+      let renderer = new THREE.WebGLRenderer({ alpha: true } );
       renderer.setSize(window.innerWidth, window.innerHeight );
+      renderer.setClearColor( 0xffffff, 0);
       document.body.appendChild(renderer.domElement);
 
       window.addEventListener('resize', function() {
         let width = window.innerWidth;
         let height = window.innerHeight;
+
         renderer.setSize( width, height );
         camera.aspect = width / height;
         camera.updateProjectionMatrix( );
